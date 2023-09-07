@@ -2,6 +2,7 @@
 using System;
 using System.Net;
 using System.Net.NetworkInformation;
+using System.Text;
 
 namespace dynamicDNSTest
 {
@@ -46,9 +47,22 @@ namespace dynamicDNSTest
                 Console.WriteLine("  Dynamically configured DNS .............. : {0}",
                     properties.IsDynamicDnsEnabled);
                 Console.WriteLine("  IP Address .............. : {0}",
-                 properties.DnsAddresses.Select(a => a.AddressFamily.GetTypeCode ));
+                 ipAddresses.First());
             }
             Console.WriteLine();
+        }
+
+        private static string bytesToString(IPAddress a)
+        {
+            var result = new StringBuilder();
+
+            foreach(byte b in a.GetAddressBytes())
+            {
+                result.Append(b.ToString());
+                result.Append('.');
+            }
+
+            return result.ToString();
         }
     }
 }
