@@ -47,7 +47,7 @@ namespace dynamicDNSTest
                 Console.WriteLine("  Dynamically configured DNS .............. : {0}",
                     properties.IsDynamicDnsEnabled);
                 Console.WriteLine("  IP Address .............. : {0}",
-                 ipAddresses.First());
+                 string.Join(',', ipAddresses));
             }
             Console.WriteLine();
         }
